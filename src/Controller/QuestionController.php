@@ -10,16 +10,16 @@ class QuestionController extends AbstractController
 {
 
     /**
-     * @Route("/")
+     * @Route("/", name="app_homepage")
      */
     public function homepage()
     {
-        return new Response('What a bewitching controller we have conjured!');
+        return $this->render('question/homepage.html.twig');
     }
 
     //curly brackets fungieren als wild card
     /**
-     * @Route("/questions/{slug}")
+     * @Route("/questions/{slug}", name="app_question_show")
      */
     public function show($slug)
     {
@@ -28,6 +28,8 @@ class QuestionController extends AbstractController
             'Hoestly, I like furry shoes better than my cat',
             'Maybe... try saying the spell backwards?',
         ];
+
+        dump($this);
 
         return $this->render('question/show.html.twig', [
             //ucwords versieht alle Wörter mit Uppper Case
